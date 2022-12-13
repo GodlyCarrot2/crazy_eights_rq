@@ -5,14 +5,14 @@ public class Main {
     public static void main(String[] args) { 
         System.out.println("Crazy Eights!"); 
 
-        ArrayList<Cards> cards = new ArrayList<Cards>();
+        ArrayList<Cards> deck = new ArrayList<Cards>();
         
         int count = 0;
         /*
         for (int i = 0; i<=52; i++) {
             String x = Integer.toString(i);
             Cards card = new Cards(x, 0);
-            cards.add(card);
+            deck.add(card);
         }
         */
 
@@ -31,13 +31,14 @@ public class Main {
 
             for (int i2 = 0; i2<=10; i2++) {
                 
+                
             }
         }
 
         for (int i = 0; i<=52; i++) {
-            System.out.print(cards.get(i).getCardName()+" ");
-            System.out.println(cards.get(i).getValue());
+            System.out.print(deck.get(i).getCardName()+" ");
+            System.out.println(deck.get(i).getValue());
         }
-        System.out.println(cards.get(0).getValue());
+        System.out.println(deck.get(0).getValue());
     }
 }
