@@ -17,7 +17,7 @@ public class Main {
         */
 
         //hearts, spades, diamonds, clubs
-        for (int i = 0; i <=4; i++) {
+        for (int i = 0; i <=3; i++) {
             String cardCat = "";
             if (i==0) {
                 cardCat = "Hearts";
@@ -29,9 +29,23 @@ public class Main {
                 cardCat = "Clubs";
             }
 
-            for (int i2 = 0; i2<=10; i2++) {
-                
-                
+            for (int i2 = 0; i2<=9; i2++) {
+                System.out.println(cardCat);
+                Cards card = new Cards(cardCat, i2+1);
+                deck.add(card);
+            } 
+            
+            String face = "";
+            for (int i3 = 0; i<=2; i3++) {
+                if (i3==0) {
+                    face = "Jack";
+                } else if (i3==1) {
+                    face = "Queen";
+                } else {
+                    face = "King";
+                }
+                Cards card = new Cards((face + cardCat), 11+i3);
+                deck.add(card);
             }
         }
 
