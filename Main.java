@@ -38,13 +38,14 @@ public class Main {
             String face = "";
             for (int i3 = 0; i<=2; i3++) {
                 if (i3==0) {
-                    face = "Jack";
+                    face = "Jack ";
                 } else if (i3==1) {
-                    face = "Queen";
+                    face = "Queen ";
                 } else {
-                    face = "King";
+                    face = "King ";
                 }
-                Cards card = new Cards((face + cardCat), 11+i3);
+                String y = face.concat(cardCat);
+                Cards card = new Cards(y, 11+i3);
                 deck.add(card);
             }
         }
