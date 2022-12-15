@@ -30,13 +30,14 @@ public class Main {
             }
 
             for (int i2 = 0; i2<=9; i2++) {
-                System.out.println(cardCat);
-                Cards card = new Cards(cardCat, i2+1);
+                //System.out.println(cardCat);
+                String concatenate = Integer.toString(i2+1);
+                Cards card = new Cards((concatenate+" "+cardCat), i2+1);
                 deck.add(card);
             } 
             
             String face = "";
-            for (int i3 = 0; i<=2; i3++) {
+            for (int i3 = 0; i3<=2; i3++) {
                 if (i3==0) {
                     face = "Jack ";
                 } else if (i3==1) {
@@ -50,7 +51,7 @@ public class Main {
             }
         }
 
-        for (int i = 0; i<=52; i++) {
+        for (int i = 0; i<=51; i++) {
             System.out.print(deck.get(i).getCardName()+" ");
             System.out.println(deck.get(i).getValue());
         }
