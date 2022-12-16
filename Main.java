@@ -2,12 +2,13 @@ import java.util.Scanner;
 import java.util.ArrayList;
 
 public class Main { 
-    public static void main(String[] args) { 
-        System.out.println("Crazy Eights!"); 
+    public static void main(String[] args) {  
 
         ArrayList<Cards> deck = new ArrayList<Cards>();
-        
-        int count = 0;
+        ArrayList<Cards> discard = new ArrayList<Cards>();
+        ArrayList<Cards> hand1 = new ArrayList<Cards>();
+        ArrayList<Cards> hand2 = new ArrayList<Cards>();
+
         /*
         for (int i = 0; i<=52; i++) {
             String x = Integer.toString(i);
@@ -57,5 +58,10 @@ public class Main {
         }
         */
         //System.out.println(deck.get(0).getValue());
+
+        System.out.println("Welcome to Crazy Eights!!!");
+        System.out.println("For information on how to play Crazy Eights please review the README file.");
+
+        
     }
 }
