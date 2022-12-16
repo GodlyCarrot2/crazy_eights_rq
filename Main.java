@@ -74,7 +74,6 @@ public class Main {
             int rand = (int) (1+(Math.random()*cards));
             Cards y = new Cards(deck.get(rand).getCardName(), deck.get(rand).getValue());
             hand1.add(y);
-            System.out.println(hand1.get(d).getCardName());
         }
 
         System.out.println(p2Name+"'s Hand");
@@ -83,7 +82,12 @@ public class Main {
             int rand = (int) (1+(Math.random()*cards));
             Cards y = new Cards(deck.get(rand).getCardName(), deck.get(rand).getValue());
             hand1.add(y);
-            System.out.println(hand1.get(d).getCardName());
+        }
+
+        int win = 0;
+        while(win==0) {
+            System.out.println("");
+            String decision = sc.nextLine();
         }
     }
 }
