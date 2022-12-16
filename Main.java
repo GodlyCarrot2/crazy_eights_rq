@@ -39,22 +39,23 @@ public class Main {
             String face = "";
             for (int i3 = 0; i3<=2; i3++) {
                 if (i3==0) {
-                    face = "Jack ";
+                    face = "Jack";
                 } else if (i3==1) {
-                    face = "Queen ";
+                    face = "Queen";
                 } else {
-                    face = "King ";
+                    face = "King";
                 }
-                String y = face.concat(cardCat);
+                String y = face+" "+"of"+" "+cardCat;
                 Cards card = new Cards(y, 11+i3);
                 deck.add(card);
             }
         }
-
+        /*
         for (int i = 0; i<=51; i++) {
             System.out.print(deck.get(i).getCardName()+" ");
             System.out.println(deck.get(i).getValue());
         }
-        System.out.println(deck.get(0).getValue());
+        */
+        //System.out.println(deck.get(0).getValue());
     }
 }
