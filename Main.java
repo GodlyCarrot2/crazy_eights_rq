@@ -9,15 +9,6 @@ public class Main {
         ArrayList<Cards> hand1 = new ArrayList<Cards>();
         ArrayList<Cards> hand2 = new ArrayList<Cards>();
 
-        /*
-        for (int i = 0; i<=52; i++) {
-            String x = Integer.toString(i);
-            Cards card = new Cards(x, 0);
-            deck.add(card);
-        }
-        */
-
-        //hearts, spades, diamonds, clubs
         for (int i = 0; i <=3; i++) {
             String cardCat = "";
             if (i==0) {
@@ -29,11 +20,11 @@ public class Main {
             } else {
                 cardCat = "Clubs";
             }
-
-            for (int i2 = 0; i2<=9; i2++) {
+            
+            for (int i2 = 0; i2<=8; i2++) {
                 //System.out.println(cardCat);
-                String concatenate = Integer.toString(i2+1);
-                Cards card = new Cards((concatenate+" "+cardCat), i2+1);
+                String concatenate = Integer.toString(i2+2);
+                Cards card = new Cards((concatenate+" "+cardCat), i2+2);
                 deck.add(card);
             } 
             
@@ -46,10 +37,14 @@ public class Main {
                 } else {
                     face = "King";
                 }
-                String y = face+" "+"of"+" "+cardCat;
+                String y = face+" of "+cardCat;
                 Cards card = new Cards(y, 11+i3);
                 deck.add(card);
             }
+
+            String y = "Ace"+" of "+cardCat;
+            Cards card = new Cards(y, 1);
+            deck.add(card);
         }
         /*
         for (int i = 0; i<=51; i++) {
@@ -61,7 +56,14 @@ public class Main {
 
         System.out.println("Welcome to Crazy Eights!!!");
         System.out.println("For information on how to play Crazy Eights please review the README file.");
+        Scanner sc =  new Scanner(System.in);
 
+        System.out.println("Player one, what is your name?");
+        String p1Name = sc.nextLine();
         
+        System.out.println("Player two, what is your name?");
+        String p2Name = sc.nextLine();
+
+        System.out.println(p1Name+" vs "+p2Name);
     }
 }
