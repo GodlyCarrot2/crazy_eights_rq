@@ -12,13 +12,13 @@ public class Main {
         for (int i = 0; i <=3; i++) {
             String cardCat = "";
             if (i==0) {
-                cardCat = "Hearts";
+                cardCat = "Hearts ";
             } else if (i==1) {
-                cardCat = "Spades";
+                cardCat = "Spades ";
             } else if (i==2) {
-                cardCat = "Diamonds";
+                cardCat = "Diamonds ";
             } else {
-                cardCat = "Clubs";
+                cardCat = "Clubs ";
             }
             
             for (int i2 = 0; i2<=8; i2++) {
@@ -65,5 +65,25 @@ public class Main {
         String p2Name = sc.nextLine();
 
         System.out.println(p1Name+" vs "+p2Name);
+        System.out.print("\033[H\033[2J");
+
+        //deals the cards out to both players
+        System.out.println(p1Name+"'s Hand");
+        for (int d=0; d<=4; d++ ) {
+            int cards = 52;
+            int rand = (int) (1+(Math.random()*cards));
+            Cards y = new Cards(deck.get(rand).getCardName(), deck.get(rand).getValue());
+            hand1.add(y);
+            System.out.println(hand1.get(d).getCardName());
+        }
+
+        System.out.println(p2Name+"'s Hand");
+        for (int d=0; d<=4; d++ ) {
+            int cards = 52;
+            int rand = (int) (1+(Math.random()*cards));
+            Cards y = new Cards(deck.get(rand).getCardName(), deck.get(rand).getValue());
+            hand1.add(y);
+            System.out.println(hand1.get(d).getCardName());
+        }
     }
 }
