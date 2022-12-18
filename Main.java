@@ -85,8 +85,15 @@ public class Main {
         }
 
         int win = 0;
+        int turn = 1;
         while(win==0) {
-            System.out.println("");
+            if (turn%2 == 1) {
+                
+            } else if (turn%2 == 0) {
+
+            }
+
+            System.out.println("Options: ");
             String decision = sc.nextLine();
         }
     }
