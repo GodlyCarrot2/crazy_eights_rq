@@ -7,7 +7,7 @@ public class Main {
         ArrayList<Cards> deck = new ArrayList<Cards>();
         ArrayList<Cards> discard = new ArrayList<Cards>();
         ArrayList<Cards> hand1 = new ArrayList<Cards>();
-        ArrayList<Cards> hand2 = new ArrayList<Cards>();
+        ArrayList<Cards> comphand = new ArrayList<Cards>();
 
         for (int i = 0; i <=3; i++) {
             String cardCat = "";
@@ -58,17 +58,13 @@ public class Main {
         System.out.println("For information on how to play Crazy Eights please review the README file.");
         Scanner sc =  new Scanner(System.in);
 
-        System.out.println("Player one, what is your name?");
+        System.out.println("Player, what is your name?");
         String p1Name = sc.nextLine();
-        
-        System.out.println("Player two, what is your name?");
-        String p2Name = sc.nextLine();
 
-        System.out.println(p1Name+" vs "+p2Name);
         System.out.print("\033[H\033[2J");
 
-        //deals the cards out to both players
-        System.out.println(p1Name+"'s Hand");
+        //deals the cards out to both players\
+        System.out.println("Here is your hand, "+p1Name);
         for (int d=0; d<=4; d++ ) {
             int cards = 52;
             int rand = (int) (1+(Math.random()*cards));
@@ -76,20 +72,20 @@ public class Main {
             hand1.add(y);
         }
 
-        System.out.println(p2Name+"'s Hand");
         for (int d=0; d<=4; d++ ) {
             int cards = 52;
             int rand = (int) (1+(Math.random()*cards));
             Cards y = new Cards(deck.get(rand).getCardName(), deck.get(rand).getValue());
-            hand1.add(y);
+            comphand.add(y);
         }
 
         int win = 0;
-        int turn = 1;
+        int t = 1;
+        String turn = "";
         while(win==0) {
-            if (turn%2 == 1) {
+            if (t%2 == 1) {
                 
-            } else if (turn%2 == 0) {
+            } else if (t%2 == 0) {
 
             }
 
