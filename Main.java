@@ -70,6 +70,7 @@ public class Main {
             int rand = (int) (1+(Math.random()*cards));
             Cards y = new Cards(deck.get(rand).getCardName(), deck.get(rand).getValue());
             hand1.add(y);
+            System.out.println(hand1.get(d).getCardName());
         }
 
         for (int d=0; d<=4; d++ ) {
@@ -80,15 +81,7 @@ public class Main {
         }
 
         int win = 0;
-        int t = 1;
-        String turn = "";
         while(win==0) {
-            if (t%2 == 1) {
-                
-            } else if (t%2 == 0) {
-
-            }
-
             System.out.println("Options: ");
             String decision = sc.nextLine();
         }
