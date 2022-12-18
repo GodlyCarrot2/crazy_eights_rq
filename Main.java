@@ -63,29 +63,49 @@ public class Main {
 
         System.out.print("\033[H\033[2J");
 
-        //deals the cards out to both players\
+        //deals the cards out to both players
+        int cards = 52;
         System.out.println("Here is your hand, "+p1Name);
         for (int d=0; d<=4; d++ ) {
-            int cards = 52;
             int rand = (int) (1+(Math.random()*cards));
             Cards y = new Cards(deck.get(rand).getCardName(), deck.get(rand).getValue());
             deck.remove(rand);
             hand1.add(y);
             System.out.println(hand1.get(d).getCardName());
+            cards = cards-1;
         }
 
         for (int d=0; d<=4; d++ ) {
-            int cards = 52;
             int rand = (int) (1+(Math.random()*cards));
             Cards y = new Cards(deck.get(rand).getCardName(), deck.get(rand).getValue());
             deck.remove(rand);
             comphand.add(y);
+            cards = cards-1;
         }
 
         int win = 0;
         while(win==0) {
-            System.out.println("Options: ");
+            System.out.println("\nOptions: \nA) Look at hand. \nB) Play a card. \nC) Draw a card.");
             String decision = sc.nextLine();
+            if (decision.equals("A")) {
+                System.out.print("\033[H\033[2J");
+                System.out.println("You choose to look at your hand!");
+                for (int d = 0; d < hand1.size(); d++) {
+                    System.out.println(hand1.get(d).getCardName());
+                }
+                
+
+            } else if (decision.equals("B")) {
+                System.out.print("\033[H\033[2J");
+                System.out.println("You choose to play a card!");
+
+            } else if (decision.equals("C")) {
+                System.out.print("\033[H\033[2J");
+                System.out.println("You choose to draw a card!");
+
+            } else {
+                System.out.println("Please enter the option A, B or C with a capital letter.");
+            }
         }
     }
 }
