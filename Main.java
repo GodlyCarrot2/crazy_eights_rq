@@ -69,6 +69,7 @@ public class Main {
             int cards = 52;
             int rand = (int) (1+(Math.random()*cards));
             Cards y = new Cards(deck.get(rand).getCardName(), deck.get(rand).getValue());
+            deck.remove(rand);
             hand1.add(y);
             System.out.println(hand1.get(d).getCardName());
         }
@@ -77,6 +78,7 @@ public class Main {
             int cards = 52;
             int rand = (int) (1+(Math.random()*cards));
             Cards y = new Cards(deck.get(rand).getCardName(), deck.get(rand).getValue());
+            deck.remove(rand);
             comphand.add(y);
         }
 
