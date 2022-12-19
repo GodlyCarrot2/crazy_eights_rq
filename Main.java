@@ -1,3 +1,4 @@
+//Imports Scanner, ArrayList and Collections
 import java.util.Scanner;
 import java.util.ArrayList;
 import java.util.Collections;
@@ -5,11 +6,13 @@ import java.util.Collections;
 public class Main { 
     public static void main(String[] args) {  
 
-        ArrayList<Cards> deck = new ArrayList<Cards>();
-        ArrayList<Cards> discard = new ArrayList<Cards>();
-        ArrayList<Cards> hand1 = new ArrayList<Cards>();
-        ArrayList<Cards> comphand = new ArrayList<Cards>();
+        //Creates the ArrayLists
+        ArrayList<Cards> deck = new ArrayList<Cards>(); //the array list for the deck
+        ArrayList<Cards> discard = new ArrayList<Cards>(); //the array list for the discard pile
+        ArrayList<Cards> hand1 = new ArrayList<Cards>(); //the array list for the player hand
+        ArrayList<Cards> comphand = new ArrayList<Cards>(); //the array list for the computer hand
 
+        //Creates everysingle card of the deck
         for (int i = 0; i <=3; i++) {
             String cardCat = "";
             if (i==0) {
@@ -22,13 +25,14 @@ public class Main {
                 cardCat = "Clubs";
             }
             
+            //Creates all the number cards
             for (int i2 = 0; i2<=8; i2++) {
-                //System.out.println(cardCat);
                 String concatenate = Integer.toString(i2+2);
                 Cards card = new Cards((concatenate+" "+cardCat), i2+2, cardCat);
                 deck.add(card);
             } 
             
+            //Creates all the face cards
             String face = "";
             for (int i3 = 0; i3<=2; i3++) {
                 if (i3==0) {
@@ -43,18 +47,14 @@ public class Main {
                 deck.add(card);
             }
 
+            //Creates the 4 aces
             String y = "Ace"+" of "+cardCat;
             Cards card = new Cards(y, 1, cardCat);
             deck.add(card);
         }
-        /*
-        for (int i = 0; i<=51; i++) {
-            System.out.print(deck.get(i).getCardName()+" ");
-            System.out.println(deck.get(i).getValue());
-        }
-        */
-        //System.out.println(deck.get(0).getValue());
 
+        //Starts tehg ame and asks the user for their name
+        System.out.print("\033[H\033[2J"); //clears the terminal
         System.out.println("Welcome to Crazy Eights!!!");
         System.out.println("For information on how to play Crazy Eights please review the README file.");
         Scanner sc =  new Scanner(System.in);
@@ -108,7 +108,7 @@ public class Main {
                 //check for legal moves
                 int legal = 0;
                 for (int d = 0; d < hand1.size(); d++) {
-                    if ((hand1.get(d).getCardType().equals(topcard.getCardType())) || (hand1.get(d).getValue() == (topcard.getValue()))) {
+                    if ((hand1.get(d).getCardType().equals(topcard.getCardType())) || (hand1.get(d).getValue() == (topcard.getValue())) || hand1.get(d).getValue() == 8) {
                         legal = legal+1;
                     }
                 }
@@ -125,20 +125,51 @@ public class Main {
                         System.out.println("Select the Number (not value) of the card you want to play.");
                         int play = Integer.parseInt(sc.nextLine());
                         
-                        if ((hand1.get(play-1).getCardType().equals(topcard.getCardType()))||(hand1.get(play-1).getValue() == (topcard.getValue()))) {
+                        if ((hand1.get(play-1).getCardType().equals(topcard.getCardType())) || (hand1.get(play-1).getValue() == (topcard.getValue())) || hand1.get(play-1).getValue() == 8) {
                             topcard = hand1.get(play-1);
                             discard.add(hand1.get(play-1));
                             hand1.remove(play-1);
+
+                            if (hand1.get(play-1).getValue() == 8) {
+                                Scanner scan = new Scanner(System.in);
+                                System.out.println("Which suit would you like to chance it to? \nA) Hearts \nB) Spades \nC) Clubs \nD) Diamonds");
+                                String suit = scan.nextLine();
+                                if (suit.equals("A")) {
+                                    System.out.println("You choose: Hearts");
+                                    topcard.setCardType("Hearts");
+                                    topcard.setCardName("8 of Hearts");
+                                } else if (suit.equals("B")) {
+                                    System.out.println("You choose: Spades");
+                                    topcard.setCardType("Spades");
+                                    topcard.setCardName("8 of Spades");
+                                } else if (suit.equals("C")) {
+                                    System.out.println("You choose: Clubs");
+                                    topcard.setCardType("Clubs");
+                                    topcard.setCardName("8 of Clubs");
+                                } else if (suit.equals("D")) {
+                                    System.out.println("You choose: Diamonds");
+                                    topcard.setCardType("Diamonds");
+                                    topcard.setCardName("8 of Diamonds");
+                                }
+                            }
+
                             work = 1;
+
                             System.out.print("\033[H\033[2J");
                             System.out.println("You played: "+topcard.getCardName());
+                            
+                            //checks if the user won
+                            if (hand1.size() == 0) {
+                                win = 1; 
+                                break;
+                            }
 
                             //has the AI choose a random card it can play
                             int done = 0;
                             while (done == 0) {
                                 int legal2 = 0;
                                 for (int d = 0; d < comphand.size(); d++) {
-                                    if ((comphand.get(d).getCardType().equals(topcard.getCardType())) || (comphand.get(d).getValue() == (topcard.getValue()))) {
+                                    if ((comphand.get(d).getCardType().equals(topcard.getCardType())) || (comphand.get(d).getValue() == (topcard.getValue())) || comphand.get(d).getValue() == 8) {
                                         legal2 = legal2+1;
                                     }
                                 }
@@ -166,7 +197,7 @@ public class Main {
                                 } else if (legal2 > 0) {
                                     Collections.shuffle(comphand);
                                     for (Cards i: comphand) {
-                                        if ((i.getCardType().equals(topcard.getCardType())) || (i.getValue() == (topcard.getValue()))) {
+                                        if ((i.getCardType().equals(topcard.getCardType())) || (i.getValue() == (topcard.getValue())) || i.getValue() == 8) {
                                             topcard = i;
                                             discard.add(i);
                                             comphand.remove(i);
@@ -177,6 +208,12 @@ public class Main {
                                 }
                             }
                             System.out.println("The AI played a: "+topcard.getCardName());
+
+                            //checks if the AI won
+                            if (comphand.size() == 0) {
+                                win = 2;
+                                break;
+                            }
 
                         } else {
                             System.out.println("\nYou can't play that card. Please choose a different card.\n");
@@ -219,6 +256,8 @@ public class Main {
                 win = 2;
             }
         }
+        
+        //checks the win condition
         if (win == 1) {
             System.out.println("You Won!!");
         } else if (win == 2) {
