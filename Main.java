@@ -128,7 +128,6 @@ public class Main {
                         if ((hand1.get(play-1).getCardType().equals(topcard.getCardType())) || (hand1.get(play-1).getValue() == (topcard.getValue())) || hand1.get(play-1).getValue() == 8) {
                             topcard = hand1.get(play-1);
                             discard.add(hand1.get(play-1));
-                            hand1.remove(play-1);
 
                             if (hand1.get(play-1).getValue() == 8) {
                                 Scanner scan = new Scanner(System.in);
@@ -152,7 +151,8 @@ public class Main {
                                     topcard.setCardName("8 of Diamonds");
                                 }
                             }
-
+                            
+                            hand1.remove(play-1);
                             work = 1;
 
                             System.out.print("\033[H\033[2J");
