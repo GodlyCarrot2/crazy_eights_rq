@@ -1,15 +1,18 @@
 public class Cards {
     private String cardName;
     private int value;
+    private String cardType;
     
     public Cards() {
         cardName = "";
         value = 0;
+        cardType = "";
     }
 
-    public Cards(String a, int b) {
+    public Cards(String a, int b, String c) {
         cardName = a;
         value = b;
+        cardType = c;
     }
 
     public String getCardName() {
@@ -26,5 +29,13 @@ public class Cards {
 
     public void setValue(int b) {
         value = b;
+    }
+
+    public String getCardType() {
+        return cardType;
+    }
+
+    public void setCardType(String c) {
+        cardType = c;
     }
 }

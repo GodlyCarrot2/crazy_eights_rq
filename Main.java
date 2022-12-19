@@ -12,19 +12,19 @@ public class Main {
         for (int i = 0; i <=3; i++) {
             String cardCat = "";
             if (i==0) {
-                cardCat = "Hearts ";
+                cardCat = "Hearts";
             } else if (i==1) {
-                cardCat = "Spades ";
+                cardCat = "Spades";
             } else if (i==2) {
-                cardCat = "Diamonds ";
+                cardCat = "Diamonds";
             } else {
-                cardCat = "Clubs ";
+                cardCat = "Clubs";
             }
             
             for (int i2 = 0; i2<=8; i2++) {
                 //System.out.println(cardCat);
                 String concatenate = Integer.toString(i2+2);
-                Cards card = new Cards((concatenate+" "+cardCat), i2+2);
+                Cards card = new Cards((concatenate+" "+cardCat), i2+2, cardCat);
                 deck.add(card);
             } 
             
@@ -38,12 +38,12 @@ public class Main {
                     face = "King";
                 }
                 String y = face+" of "+cardCat;
-                Cards card = new Cards(y, 11+i3);
+                Cards card = new Cards(y, 11+i3, cardCat);
                 deck.add(card);
             }
 
             String y = "Ace"+" of "+cardCat;
-            Cards card = new Cards(y, 1);
+            Cards card = new Cards(y, 1, cardCat);
             deck.add(card);
         }
         /*
@@ -68,7 +68,7 @@ public class Main {
         System.out.println("Here is your hand, "+p1Name);
         for (int d=0; d<=4; d++ ) {
             int rand = (int) (1+(Math.random()*cards));
-            Cards y = new Cards(deck.get(rand).getCardName(), deck.get(rand).getValue());
+            Cards y = new Cards(deck.get(rand).getCardName(), deck.get(rand).getValue(), deck.get(rand).getCardType());
             deck.remove(rand);
             hand1.add(y);
             System.out.println(hand1.get(d).getCardName());
@@ -77,15 +77,20 @@ public class Main {
 
         for (int d=0; d<=4; d++ ) {
             int rand = (int) (1+(Math.random()*cards));
-            Cards y = new Cards(deck.get(rand).getCardName(), deck.get(rand).getValue());
+            Cards y = new Cards(deck.get(rand).getCardName(), deck.get(rand).getValue(), deck.get(rand).getCardType());
             deck.remove(rand);
             comphand.add(y);
             cards = cards-1;
         }
 
         int win = 0;
+        int rand = (int) (1+(Math.random()*cards));
+        deck.remove(rand);
+        Cards topcard = new Cards(deck.get(rand).getCardName(), deck.get(rand).getValue(), deck.get(rand).getCardType());
+        cards = cards-1;
         while(win==0) {
             System.out.println("\nOptions: \nA) Look at hand. \nB) Play a card. \nC) Draw a card.");
+            System.out.println("\nThe top cards is: "+topcard.getCardName());
             String decision = sc.nextLine();
             if (decision.equals("A")) {
                 System.out.print("\033[H\033[2J");
@@ -93,17 +98,39 @@ public class Main {
                 for (int d = 0; d < hand1.size(); d++) {
                     System.out.println(hand1.get(d).getCardName());
                 }
-                
 
             } else if (decision.equals("B")) {
                 System.out.print("\033[H\033[2J");
                 System.out.println("You choose to play a card!");
+
+                //check for legal moves
+                int legal = 0;
+                for (int d = 0; d < hand1.size(); d++) {
+                    if ((hand1.get(d).getCardType().equals(topcard.getCardType())) || (hand1.get(d).getValue() == (topcard.getValue()))) {
+                        legal = legal+1;
+                        System.out.println(hand1.get(d).getCardName()+topcard.getCardName());
+                    }
+                }
+
+                if (legal == 0) {
+                    System.out.println("Sorry you don't have any matching cards. You must draw a card.");
+                } else if (legal > 0) {
+                    System.out.println("Which card would you like to play?");
+                }
+
+                /*
+                int play = 0;
+                while (play == 0) {
+                    
+                }
+                */
 
             } else if (decision.equals("C")) {
                 System.out.print("\033[H\033[2J");
                 System.out.println("You choose to draw a card!");
 
             } else {
+                System.out.print("\033[H\033[2J");
                 System.out.println("Please enter the option A, B or C with a capital letter.");
             }
         }
