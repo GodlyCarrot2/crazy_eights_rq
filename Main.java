@@ -53,7 +53,7 @@ public class Main {
             deck.add(card);
         }
 
-        //Starts tehg ame and asks the user for their name
+        //Starts the game and asks the user for their name
         System.out.print("\033[H\033[2J"); //clears the terminal
         System.out.println("Welcome to Crazy Eights!!!");
         System.out.println("For information on how to play Crazy Eights please review the README file.");
