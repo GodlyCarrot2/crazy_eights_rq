@@ -12,7 +12,7 @@ public class Main {
         ArrayList<Cards> hand1 = new ArrayList<Cards>(); //the array list for the player hand
         ArrayList<Cards> comphand = new ArrayList<Cards>(); //the array list for the computer hand
 
-        //Creates everysingle card of the deck
+        //Creates every single card of the deck
         for (int i = 0; i <=3; i++) {
             String cardCat = "";
             if (i==0) {
@@ -108,7 +108,6 @@ public class Main {
                 }
             
             //Lets the user play a card
-
             } else if (decision.equals("B")) {
                 System.out.print("\033[H\033[2J");
                 System.out.println("You choose to play a card!");
