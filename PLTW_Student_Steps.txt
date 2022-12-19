@@ -1,0 +1,93 @@
+Welcome to the PLTW Unit 7: Arraylists Crazy Eights Activity
+ArrayLists
+
+How to initialize an array list?
+Example:  ArrayList<String> newList = new ArrayList<String>();
+The first ArrayList initializes the ArrayList type.
+The element type belongs in between the <>.
+The name of the arraylist comes right before the = sign.
+
+How to add an item to the ArrayList.
+Example: name.add(item);
+Name is the name of your ArrayList.
+Item is what you're adding to the ArrayList.
+
+How to get an item from your ArrayList.
+Example: name.get(item);
+
+How to set an item from your ArrayList.
+Example: name.set(index, value);
+Index refers to which item from the array list you want to change.
+Value is what you want to change it to.
+
+How to check the size of your ArrayList. (useful for this activity.)
+Example name.size();
+
+___Activity Walkthrough___
+1)
+Creating the ArrayLists.
+Example: ArrayList<Cards> deck = new ArrayList<Cards>();
+
+2)
+Create the Cards to the deck. Reference the Cards.java file if you need help.
+Create a new Card and add it to the deck for the number cards
+For the face cards
+And for the Aces
+Example: Cards card = new Cards(y, 1, cardCat); 
+         deck.add(card);
+         
+3)
+Deal the Cards out to the Player and Computer
+You can do this by randomizing a variable to get a random card.
+Then use that variable to create a new card with the same Card Name, Value and Card Type as the randomized card.
+After that remove the card from the deck, add it to the hand.
+Do this for both the user and the Player
+Hint: You will most likely need a loop.
+Reference the answer key for help.
+
+4)
+Choose the Top Card.
+You need to first create a random variable again.
+Then simply create a new card: topcard with identical stats to the randomized card. 
+After that remove the card from the deck.
+See the answer key for help.
+
+5)
+Write a for loop letting the user see the hand.
+Hind: Use the .size() method.
+
+6)
+Write the code that checks for if the user has any legal moves.
+Use a nest if statement inside a for loop.
+Also make a variable tracking how many cards can be played.
+
+7)
+Construct and if statement that checks if the user can play the card they choose.
+First go up a few lines and code another part that prints out the user’s hand
+For the if statement you need to check if the card played matches the Card Type, Value or if its an 8.
+Then change the top card and discard the card from the players hand
+
+8)
+Do step 6 but for the computer’s side. (Check for legal moves)
+
+9)
+You then need to draw cards for the computer.
+You can do this by again find a random card by using a Math.random()
+Then remove it from the deck and add it to the computer’s hand.
+
+10)
+Reshuffle the deck when it reaches 0 cards.
+First check if the deck size is 0.
+Then create a for loop that adds the cards to the deck and removes them from the discard pile.
+You may need to make sure the topcard stays the same
+Then shuffle the deck
+
+11)
+Create an enhanced if statement that checks the computer for its playable cards and then plays the first one.
+Reference the Answer key for help.
+
+12)
+Complete the code for when the user draws cards and when the deck hits 0.
+If you completed step 10 use that as reference.
+
+Congratulations, you finished.
