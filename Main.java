@@ -67,7 +67,7 @@ public class Main {
         int cards = 52;
         System.out.println("Here is your hand, "+p1Name);
         for (int d=0; d<=4; d++ ) {
-            int rand = (int) (1+(Math.random()*cards));
+            int rand = (int) ((Math.random()*cards));
             Cards y = new Cards(deck.get(rand).getCardName(), deck.get(rand).getValue(), deck.get(rand).getCardType());
             deck.remove(rand);
             hand1.add(y);
@@ -76,7 +76,7 @@ public class Main {
         }
 
         for (int d=0; d<=4; d++ ) {
-            int rand = (int) (1+(Math.random()*cards));
+            int rand = (int) ((Math.random()*cards));
             Cards y = new Cards(deck.get(rand).getCardName(), deck.get(rand).getValue(), deck.get(rand).getCardType());
             deck.remove(rand);
             comphand.add(y);
@@ -92,6 +92,7 @@ public class Main {
             System.out.println("\nOptions: \nA) Look at hand. \nB) Play a card. \nC) Draw a card.");
             System.out.println("\nThe top cards is: "+topcard.getCardName());
             String decision = sc.nextLine();
+
             if (decision.equals("A")) {
                 System.out.print("\033[H\033[2J");
                 System.out.println("You choose to look at your hand!");
@@ -108,26 +109,42 @@ public class Main {
                 for (int d = 0; d < hand1.size(); d++) {
                     if ((hand1.get(d).getCardType().equals(topcard.getCardType())) || (hand1.get(d).getValue() == (topcard.getValue()))) {
                         legal = legal+1;
-                        System.out.println(hand1.get(d).getCardName()+topcard.getCardName());
                     }
                 }
 
                 if (legal == 0) {
                     System.out.println("Sorry you don't have any matching cards. You must draw a card.");
                 } else if (legal > 0) {
-                    System.out.println("Which card would you like to play?");
+                    int work = 0;
+                    while (work == 0) {
+                        System.out.println("Which card would you like to play?");
+                        for (int d = 0; d < hand1.size(); d++) {
+                            System.out.println(hand1.get(d).getCardName());
+                        }
+                        System.out.println("Select the Number (not value) of the card you want to play.");
+                        int play = Integer.parseInt(sc.nextLine());
+                        
+                        if ((hand1.get(play-1).getCardType().equals(topcard.getCardType()))||(hand1.get(play-1).getValue() == (topcard.getValue()))) {
+                            topcard = hand1.get(play-1);
+                            hand1.remove(play-1);
+                            work = 1;
+                            System.out.print("\033[H\033[2J");
+                            System.out.println("You played: "+topcard.getCardName());
+                        } else {
+                            System.out.println("You can't play that card. Please choose a different card.");
+                        }
+                        
+                    }
                 }
-
-                /*
-                int play = 0;
-                while (play == 0) {
-                    
-                }
-                */
 
             } else if (decision.equals("C")) {
                 System.out.print("\033[H\033[2J");
                 System.out.println("You choose to draw a card!");
+                rand = (int) ((Math.random()*cards));
+                Cards y = new Cards(deck.get(rand).getCardName(), deck.get(rand).getValue(), deck.get(rand).getCardType());
+                deck.remove(rand);
+                hand1.add(y);
+                System.out.println("You drew a: "+y.getCardName());
 
             } else {
                 System.out.print("\033[H\033[2J");
