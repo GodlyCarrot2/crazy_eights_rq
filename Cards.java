@@ -1,14 +1,17 @@
 public class Cards {
+    //creates the variables
     private String cardName;
     private int value;
     private String cardType;
-    
+
+    //makes the constructors
     public Cards() {
         cardName = "";
         value = 0;
         cardType = "";
     }
 
+    //Creates the getters and setters
     public Cards(String a, int b, String c) {
         cardName = a;
         value = b;
